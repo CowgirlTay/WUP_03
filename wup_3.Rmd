@@ -14,8 +14,11 @@ require(tidyverse)
 require(tigerstats)
 davisdata <- read.csv(file="UCDavis.csv")
 ```
-## Our Goal is to answer this question Is there a difference between the alcohol consumed between the row
-## you choose to sit in??
+## Our Goal is to answer this question Is there a difference between the alcohol consumed between the row you choose to sit in??
+
+$H_0$: There is no difference in alcohol consumption based on which row one sits.
+
+$H_A$: There is a difference in alcohol consumption based on which row one sits.
 
 ## Now with ggplot - first select the basic data
 
@@ -28,6 +31,7 @@ basicCN <- ggplot(davisdata,aes(y=alcohol,x=Seat))
 basicCN + geom_boxplot()
 ```
   
+  Based on the boxplot people who consume more alcohol sit in the back row.There is not much of a difference in alcohol consumption between people who sit in the from and the middle.   
   
 ### get fancy  
 
@@ -37,7 +41,16 @@ basicCN + geom_boxplot(notch=TRUE,outlier.color = "red") + stat_boxplot(geom ='e
 
 ## Numerical Summarys 
 
+```{r}
+favstats(alcohol~Seat,data=davisdata)
+```
+
 ## Inferential Tests
+   
+```{r}
+model1 <- aov(alcohol~Seat,data=davisdata)
+summary.aov(model1)
+```
 
 ## Conclusions
 
