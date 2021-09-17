@@ -31,7 +31,7 @@ basicCN <- ggplot(davisdata,aes(y=alcohol,x=Seat))
 basicCN + geom_boxplot()
 ```
   
-  Based on the boxplot people who consume more alcohol sit in the back row.There is not much of a difference in alcohol consumption between people who sit in the from and the middle.   
+in the boxplot people who consume more alcohol sit in the back row.There is not much of a difference in alcohol consumption between people who sit in the from and the middle.   
   
 ### get fancy  
 
@@ -39,11 +39,15 @@ basicCN + geom_boxplot()
 basicCN + geom_boxplot(notch=TRUE,outlier.color = "red") + stat_boxplot(geom ='errorbar') + labs(title="Fancy notch boxplot \n with 2 lines")
 ```
 
+the plots above show that people who sit in the back row consume more alcohol than those who sit in the front row and middle row. 
+
 ## Numerical Summarys 
 
 ```{r}
 favstats(alcohol~Seat,data=davisdata)
 ```
+
+based on the numerical summary the back row sitters consume far more alcohol than both front row sitters and middle row sitters.
 
 ## Inferential Tests
    
@@ -61,4 +65,4 @@ The tukey test shows that there is no difference between the middle-front row si
 
 ## Conclusions
 
-In conclusion people who sit in the back row drink more than both the front sitters and middle sitters. 
+In conclusion people who sit in the back row consume more alcohol than both the front sitters and middle sitters, however there is no difference in alcohol consumption between front row sitters and middle row sitters.
